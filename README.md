@@ -1,5 +1,7 @@
 # phpbin
-> Run php code in the browser
+> Collaborative PHP Debugging App
+
+Check out the demo: [http://akenn.github.io/phpbin/](http://akenn.github.io/phpbin/)
 
 ## Install
 
