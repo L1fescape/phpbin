@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>phpbin</title>
+    <meta name="description" content="Run php code in the browser">
+
+    <link rel="stylesheet" href="/main.css">
+    <link rel="canonical" href="http://phpb.in/">
+
+    <script src="/app.js"></script>
+  </head>
+<body>
+
+  <header class="site-header">
+    <div class="wrapper">
+      <a class="site-title" href="/">phpbin</a>
+    </div>
+  </header>
+  <div class="page-content">
+    <div class="wrapper">
+
+      <textarea id="source" placeholder="Enter php here"></textarea>
+      <div id="output"></div>
+      <button id="eval">Evaluate Code</button>
+      <button id="save">Save</button>
+      <br />
+      <br />
+      <h3>Samples</h3>
+      <ul class="samples">
+        <li><a href="#" data-source="hello">Hello World</a></li>
+        <li><a href="#" data-source="printf">printf</a></li>
+        <li><a href="#" data-source="loop">For Loop</a></li>
+      </ul>
+
+      <strong>Note:</strong> I whipped this up in about an hour and it's still a work in progress. It works, but it looks awful.
+
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="wrapper">
+      <h2 class="footer-heading">phpbin</h2>
+      <div class="footer-col-wrapper">
+        <div class="footer-col  footer-col-1">
+          <ul class="contact-list">
+            <li>phpbin</li>
+            <li><a href="mailto:andrew@akenn.org">andrew@akenn.org</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
