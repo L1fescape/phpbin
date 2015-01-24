@@ -175,6 +175,8 @@
  */
 #source, #output{
   width:49%;
+  padding: 10px;
+  box-sizing: border-box;
   display:inline-block;
   min-height:200px;
   border:1px solid #eee;
@@ -190,6 +192,8 @@
 
 #eval{
   font-family: $base-font-family;
+  padding: 10px;
+  box-sizing: border-box;
   font-size: $base-font-size;
   line-height: $base-line-height;
   font-weight: 300;
