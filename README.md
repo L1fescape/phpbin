@@ -5,15 +5,16 @@ Check out the demo: [phpb.in](http://phpb.in)
 
 ## Install
 
-- Install Jekyll and node
+- Install mongodb
 - Run `npm install && npm run build`
 
 ## Run
 
-- Run `jekyll serve`
+```
+npm start
+```
 
 ## TODO
-- build backend for saving/sharing snippets
 - actually use marionette for views/events
 - syntax highlighting while editing
 - pretty
