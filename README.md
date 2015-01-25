@@ -18,7 +18,6 @@ npm start
 - actually use marionette for views/events
 - syntax highlighting while editing
 - pretty
-- include php.js as an npm module
 - shitty code is shitty
 
 ## Credits

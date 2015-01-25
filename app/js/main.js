@@ -1,6 +1,7 @@
 'use strict';
 var _ = require('underscore');
 var $ = require('jquery');
+var PHP = require('phpvm');
 
 var scripts = {
   hello : "<?php echo('Hello world!'); ?>",
@@ -16,8 +17,7 @@ $(document).ready(function(){
       root : '/',
       SERVER: {
         SCRIPT_FILENAME: path.substring(0, path.length - 1)
-      },
-      filesystem: new PHP.Adapters.XHRFileSystem()
+      }
     };
 
     var engine = new PHP(source, options);
