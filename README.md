@@ -1,7 +1,7 @@
 # phpbin
 > Collaborative PHP Debugging App
 
-Check out the demo: [phpb.in](http://phpb.in)
+Check out the demo: ~~[phpb.in](http://phpb.in)~~ working on it
 
 ## Install
 
