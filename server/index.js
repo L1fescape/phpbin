@@ -71,6 +71,8 @@ router.post('/snippet', function(req, res){
     content: req.body.content
   };
 
+console.log(snippet_info);
+
   Snippets.create(snippet_info)
     .then(function(snippet){
       return res.json({
