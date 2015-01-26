@@ -5,8 +5,8 @@ var Backbone = require('backbone');
 var Marionette = require('backbone.marionette');
 var Radio = require('backbone.radio');
 var EditorView = require('./views/editor');
+var HeaderView = require('./views/header');
 var _ = require('underscore');
-var exampleChannel = Radio.channel('example');
 
 var examples = new Backbone.Collection([{
   id: 'hello',
@@ -19,29 +19,7 @@ var examples = new Backbone.Collection([{
   code: '<?php for ($i = 1; $i <= 10; $i++) { \necho $i; \n} ?>'
 }]);
 
-var ExampleLink = Marionette.ItemView.extend({
-  tagName: "li",
-  template: _.template("<a href='#' data-example='<%-id%>'><%-id%></a>"),
-  events: {
-    'click': 'showExample'
-  },
-  showExample: function(e){
-    e.preventDefault();
-    var exampleID = this.$('a').attr('data-example');
-    var code = examples.find({id: exampleID});
-    exampleChannel.command('show:example', code);
-  }
-});
-
-var ExampleView = Marionette.CollectionView.extend({
-  tagName: 'ul',
-  el: '#examples',
-  childView: ExampleLink
-});
-
 $(document).ready(function(){
-  (new ExampleView({
-    collection: examples
-  })).render();
+  (new HeaderView({ examples: examples })).render();
   (new EditorView()).render();
 });

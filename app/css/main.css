@@ -29,13 +29,96 @@ a:hover {
   text-decoration: underline;
 }
 
+/** Header */
+header {
+  background: #3B3738;
+  color: #fafafa;
+  height: 50px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  width: 100%;
+}
+
+header a,
+header a:visited {
+  color: #95AB63;
+  padding: 0 16px;
+  letter-spacing: 1px;
+  line-height: 50px;
+  display: inline-block;
+  height: 50px;
+}
+
+header a:hover{
+  color: #BDD684;
+  text-decoration: none;
+}
+
+.site-title{
+  font-size:18px;
+}
+
+#nav {
+  float: right;
+  margin: 0;
+}
+
+#nav li{
+  display: inline;
+  margin: 0;
+  position: relative;
+}
+
+#nav li:after{
+  content: "|";
+  margin: 0;
+  color: #a9a9a9;
+}
+
+#nav li:last-child:after, #nav li#examples li:after{
+  display:none;
+}
+
+#nav a{
+  color: #aaa;
+}
+
+#nav a:hover{
+  color: #BDD684;
+}
+
+#nav li#examples ul{
+  display: none;
+  position: absolute;
+  top:30px;
+  left:0;
+  background: #3B3738;
+  margin: 0;
+}
+
+#nav li#examples ul li{
+  height: auto;
+}
+
+#nav li#examples:hover ul{
+  display: inline;
+}
+
+.wrap {
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 /** Editor */
-#source, #output {
+#editor textarea, #result{
   width: 49%;
+  margin-top:20px;
   padding: 10px;
   box-sizing: border-box;
-  display: inline-block
-  min-height: 200px;
+  display: inline-block;
+  min-height: 300px;
   border: 1px solid #eee;
   vertical-align: top;
   font-family: Helvetica, Arial, sans-serif;
@@ -45,19 +128,4 @@ a:hover {
   color: #111;
   background-color: #fdfdfd;
   -webkit-text-size-adjust: 100%;
-}
-
-#eval, #save {
-  font-family: Helvetica, Arial, sans-serif;
-  padding: 10px;
-  box-sizing: border-box;
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: 300;
-  color: #111;
-  background-color: #fdfdfd;
-  -webkit-text-size-adjust: 100%;
-  border: 1px solid #333;
-  margin: 10px 0;
-  cursor: pointer;
 }

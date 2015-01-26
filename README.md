@@ -15,10 +15,9 @@ npm start
 ```
 
 ## TODO
-- actually use marionette for views/events
 - syntax highlighting while editing
-- pretty
 - shitty code is shitty
+- organize css better. it's written poorly.
 
 ## Credits
 - [php.js](https://github.com/niklasvh/php.js) written by [Niklas von Hertzen](http://hertzen.com/) - used for evaluating php

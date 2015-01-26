@@ -3,24 +3,25 @@ var Marionette = require('backbone.marionette');
 var Radio = require('backbone.radio');
 var _ = require('underscore');
 var PHP = require('phpvm');
-var template = require('../templates/editor.handlebars');
+var template = require('../../templates/editor.handlebars');
 
 var exampleChannel = Radio.channel('example');
+var codeChannel = Radio.channel('code');
 
 module.exports = Marionette.ItemView.extend({
-  el: '#code',
+  el: '#editor',
   template: template,
-  events : {
-    'click #eval' : 'evaluateCode',
-    'click #save' : 'saveCode'
-  },
   initialize: function(){
     exampleChannel.comply('show:example', _.bind(function(model){
       var code = model.get('code');
       this.$('textarea').val(code);
     }, this));
 
+    codeChannel.comply('eval:result', _.bind(this.evaluateCode, this));
+    codeChannel.comply('save:result', _.bind(this.saveCode, this));
+
     // check if we should load a snippet
+    // TODO this should be done in a router
     var pathname = window.location.pathname.split('/s/');
     if (pathname.length > 1){
       var snippetID = pathname[1].replace('/', '');
@@ -30,7 +31,7 @@ module.exports = Marionette.ItemView.extend({
         if (data.success){
           var content = data.results[0].content;
           this.$('textarea').val(content);
-          this.$('#eval').click();
+          codeChannel.command('eval:result');
         }
       }, this));
     }
