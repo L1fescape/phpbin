@@ -10,13 +10,13 @@ var _ = require('underscore');
 
 var examples = new Backbone.Collection([{
   id: 'hello',
-  code: '<?php echo("Hello world!"); ?>'
+  code: '<?php\n  echo("Hello world!");\n?>'
 },{
   id: 'printf',
-  code: '<?php printf("php is number %d", "1"); ?>'
+  code: '<?php\n  printf("php is number %d", "1");\n?>'
 },{
   id: 'loop',
-  code: '<?php for ($i = 1; $i <= 10; $i++) { \necho $i; \n} ?>'
+  code: '<?php\n  for ($i = 1; $i <= 10; $i++) { \n    echo $i; \n  }\n?>'
 }]);
 
 $(document).ready(function(){
