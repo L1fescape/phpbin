@@ -40,7 +40,7 @@ module.exports = Marionette.ItemView.extend({
     var source = this.$('textarea').val();
     var path = window.location.pathname;
     var options = {
-      root : '/',
+      cfgFile : '/cfg/php.ini',
       SERVER: {
         SCRIPT_FILENAME: path.substring(0, path.length - 1)
       }
