@@ -17,7 +17,7 @@
     "jquery": "^2.1.3",
     "mongoose": "^3.8.21",
     "mongoose-hash": "^0.2.0",
-    "phpvm": "0.0.3",
+    "phpvm": "0.0.4",
     "serve-static": "^1.8.1",
     "underscore": "^1.7.0",
     "bluebird": "^2.9.2"
