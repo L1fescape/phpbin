@@ -55,7 +55,7 @@ router.get('/snippet/:snippetID', function(req, res){
         errors: []
       });
     })
-    .fail(function(error){
+    .catch(function(error){
       res.statusCode = 400;
       return res.json({
         success: false,
@@ -81,7 +81,7 @@ console.log(snippet_info);
         errors: []
       });
     })
-    .fail(function(error){
+    .catch(function(error){
       res.statusCode = 400;
       return res.json({
         success: false,

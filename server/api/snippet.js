@@ -1,9 +1,9 @@
-var Q = require('q');
+var Promise = require('bluebird');
 var Snippet = require('../models/snippet');
 
 module.exports = {
   create: function( info ){
-    var defer = Q.defer();
+    var defer = Promise.defer();
 
     if( !info.content ){
       return defer.reject('Please provide content.');
@@ -20,7 +20,7 @@ module.exports = {
     return defer.promise;
   },
   find: function( snippetID ){
-    var defer = Q.defer();
+    var defer = Promise.defer();
 
     // Check if the snippetId is valid
     if( !snippetID ){
