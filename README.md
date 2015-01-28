@@ -5,8 +5,22 @@ Check out the demo: [phpb.in/s/75b2690c4406](http://phpb.in/s/75b2690c4406)
 
 ## Install
 
-- Install mongodb
-- Run `npm install && npm run build`
+Install mongodb, then run:
+```
+npm install
+```
+
+## Build
+
+For development:
+```
+npm run build
+```
+
+For production:
+```
+export NODE_ENV=production; npm run build
+```
 
 ## Run
 

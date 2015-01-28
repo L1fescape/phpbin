@@ -15,10 +15,20 @@ function buildScript(file, watch) {
   var props = watchify.args;
   props.entries = [scriptsDir + '/' + file];
   props.debug = true;
+
+  if (process.env.NODE_ENV === 'production'){
+    props.debug = false;
+  }
   
   var bundler = watch ? watchify(browserify(props)) : browserify(props);
   
   bundler.transform(reactify);
+  if (process.env.NODE_ENV === 'production'){
+    bundler.transform({
+        global: true
+    }, 'uglifyify');
+  }
+
   function rebundle() {
     var stream = bundler.bundle();
     return stream.on('error', notify.onError({

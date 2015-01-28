@@ -27,7 +27,8 @@
     "lazypipe": "^0.2.2",
     "vinyl-source-stream": "^1.0.0",
     "reactify": "^1.0.0",
-    "watchify": "^2.2.1"
+    "watchify": "^2.2.1",
+    "uglifyify": "^3.0.1"
   },
   "browserify": {
     "transform": [
