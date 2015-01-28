@@ -1,50 +1,63 @@
 'use strict';
-var gulp = require('gulp');
-var browserify = require('browserify');
-var lazypipe = require('lazypipe');
 var source = require('vinyl-source-stream');
+var gulp = require('gulp');
+var gutil = require('gulp-util');
 var sass = require('gulp-sass');
+var browserify = require('browserify');
+var reactify = require('reactify');
+var watchify = require('watchify');
 var notify = require('gulp-notify');
-
-// Utils
-// =======================================
-
-function handleErrors(){
-  var args = Array.prototype.slice.call(arguments);
-
-  // Send error to notification center with gulp-notify
-  notify.onError({
-    title: "Compile Error",
-    message: "<%= error.message %>"
-  }).apply(this, args);
-
-  // Keep gulp from hanging on this task
-  this.emit('end');
+ 
+var scriptsDir = './app/js';
+var buildDir = './dist';
+ 
+function buildScript(file, watch) {
+  var props = watchify.args;
+  props.entries = [scriptsDir + '/' + file];
+  props.debug = true;
+  
+  var bundler = watch ? watchify(browserify(props)) : browserify(props);
+  
+  bundler.transform(reactify);
+  function rebundle() {
+    var stream = bundler.bundle();
+    return stream.on('error', notify.onError({
+        title: "Compile Error",
+        message: "<%= error.message %>"
+      }))
+      .pipe(source(file))
+      .pipe(gulp.dest(buildDir + '/'));
+  }
+  bundler.on('update', function() {
+    rebundle();
+    gutil.log('Rebundle...');
+  });
+  return rebundle();
 }
-
-
-// Tasks
-// =======================================
-
-gulp.task('browserify', function() {
-  return browserify('./app/js/main.js')
-    .bundle()
-    .on('error', handleErrors)
-    .pipe(source('app.js'))
-    .pipe(gulp.dest('./dist/'));
-});
+ 
 
 gulp.task('htdocs', function() {
   return gulp.src('app/htdocs/**')
-    .on('error', handleErrors)
+    .on('error', notify.onError({
+      title: "Compile Error",
+      message: "<%= error.message %>"
+    }))
     .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('css', function() {
   return gulp.src('app/css/**')
-    .on('error', handleErrors)
+    .on('error', notify.onError({
+      title: "Compile Error",
+      message: "<%= error.message %>"
+    }))
     .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('build', ['htdocs', 'css', 'browserify']);
-gulp.task('default', ['build']);
+gulp.task('build', ['htdocs', 'css'], function() {
+  return buildScript('app.js', false);
+});
+
+gulp.task('watch', ['htdocs', 'css'], function() {
+  return buildScript('app.js', true);
+});
