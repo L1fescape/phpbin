@@ -1,7 +1,6 @@
 var React = require('react');
 var CodeStore = require('../stores/editor');
 var EditorActions = require('../actions/editor');
-var SnippetAPIUtils = require('../utils/API');
 
 module.exports = React.createClass({  
   getInitialState: function() {
